@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.headerWrapper {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    &__background, &__mask {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    &__background {
+        &__backgroundContainer {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        &__backgroundSolid {
+            background-color: #24292e;
+        }
+
+    }
+}
