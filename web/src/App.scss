@@ -1,32 +1,215 @@
-*{
-    margin: 0;
-    padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+$headerHeight: 60px;
+$primary-color: #24292e;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
 }
 
 .headerWrapper {
+  display: block;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  border-bottom: 1px solid #000;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.32);
+
+  &__containerLink {
+    display: inline-block;
+    margin-right: 20px;
+  }
+}
+
+.mainWrapper {
+  padding: $headerHeight 0px 0px 0px;
+
+  section{
+    padding: 16px;
+    margin-bottom: 40px;
+    .title{
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+  }
+
+  .homeSection {
     display: block;
     width: 100%;
-    height: 100vh;
-    &__background, &__mask {
+    height: calc(100vh - #{$headerHeight});
+    position: relative;
+
+    &__background,
+    &__mask,
+    &__content {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &__background {
+      z-index: 1;
+
+      &__backgroundContainer {
         display: block;
         width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
+      }
+
+      &__backgroundSolid {
+        background-color: $primary-color;
+      }
     }
-    &__background {
-        &__backgroundContainer {
+    
+    &__mask {
+      z-index: 2;
+    }
+
+    &__content {
+      z-index: 3;
+      padding: 8px;
+
+      &__article {
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 16px;
+
+        &__titleContainer {
+          margin-bottom: 5px;
+
+          &__welcome {
             display: block;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        &__backgroundSolid {
-            background-color: #24292e;
+            font-size: 12px;
+            text-align: left;
+            margin-bottom: 10px;
+            color: #fff;
+          }
+
+          &__title {
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: left;
+            line-height: 3em;
+            color: #fff;
+
+            &__highlight {
+              padding: 3px 6px;
+              background-color: red;
+              font-size: 2em;
+              margin-right: 3px ;
+            }
+
+          }
         }
 
+        &__descriptionContainer {
+          font-size: 1em;
+
+          & p {
+            color: #fff;
+          }
+        }
+      }
     }
+  }
+
+  .porqueSection {
+    &__article {
+      & p {
+        font-size: 16px;
+        line-height: 32px;
+        margin-bottom: 30px;
+      }
+      & p:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .assinarSection {
+    &__description {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    &__form {
+      display: block;
+      width: 100%;
+      margin: 20px auto;
+      &__inputGroup {
+        display: block;
+        width: 100%;
+        &__input {
+          display: block;
+          width: 100%;
+          height: 50px;
+          padding: 14px;
+          border: none;
+          border-top: 1px solid #ddd;
+          border-right: 1px solid #ddd;
+          border-left: 1px solid #ddd;
+          &:first-child {
+            border-radius: 3px 3px 0px 0px;
+          }
+          &:last-child {
+            border-radius: 0px 0px 3px 3px;
+            border-bottom: 1px solid #ddd;
+          }
+        }
+        
+      }
+      &__btnSubmit {
+        display: block;
+        width: 100%;
+        height: 50px;
+        margin-top: 20px;
+        background-color: $primary-color;
+        border: none;
+        border-radius: 3px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+      }
+    }
+    &__shareContainer {
+      margin-top: 40px;
+      &__shareButton {
+        display: block;
+        width: 100%;
+        height: 40px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 3px;
+        color: #fff;
+        font-weight: 700;
+      }
+      &__shareButton.facebook {
+        background-color: #1877f2;
+      }
+      &__shareButton.whatsapp {
+        background-color: #25D366;
+      }
+    }
+  }
+
+}
+
+.footerWrapper {
+  background-color: $primary-color;
 }
