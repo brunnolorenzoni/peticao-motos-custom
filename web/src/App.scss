@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 $headerHeight: 60px;
 $primary-color: #24292e;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
 
 * {
   margin: 0;
@@ -8,6 +12,21 @@ $primary-color: #24292e;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
 }
 
 .headerWrapper {
@@ -28,27 +47,28 @@ $primary-color: #24292e;
   }
 }
 
-.mainWrapper {
+.homeSection {
+  display: block;
+  width: 100%;
+  height: calc(100vh);
   padding: $headerHeight 0px 0px 0px;
+  position: relative;
 
-  section{
-    padding: 16px;
-    margin-bottom: 40px;
-    .title{
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-  }
-
-  .homeSection {
+  &__background,
+  &__mask,
+  &__content {
     display: block;
     width: 100%;
-    height: calc(100vh - #{$headerHeight});
-    position: relative;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
-    &__background,
-    &__mask,
-    &__content {
+  &__background {
+    z-index: 1;
+
+    &__backgroundContainer {
       display: block;
       width: 100%;
       height: 100%;
@@ -57,138 +77,193 @@ $primary-color: #24292e;
       left: 0;
     }
 
-    &__background {
-      z-index: 1;
-
-      &__backgroundContainer {
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      &__backgroundSolid {
-        background-color: $primary-color;
-      }
+    &__backgroundSolid {
+      background-color: $primary-color;
     }
-    
-    &__mask {
-      z-index: 2;
-    }
+  }
 
-    &__content {
-      z-index: 3;
-      padding: 8px;
+  &__mask {
+    z-index: 2;
+  }
 
-      &__article {
-        width: 100%;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 16px;
+  &__content {
+    z-index: 3;
+    padding: 8px;
 
-        &__titleContainer {
-          margin-bottom: 5px;
+    &__article {
+      width: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 16px;
 
-          &__welcome {
-            display: block;
-            font-size: 12px;
-            text-align: left;
-            margin-bottom: 10px;
-            color: #fff;
-          }
+      &__titleContainer {
+        margin-bottom: 5px;
 
-          &__title {
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 14px;
-            text-align: left;
-            line-height: 3em;
-            color: #fff;
-
-            &__highlight {
-              padding: 3px 6px;
-              background-color: red;
-              font-size: 2em;
-              margin-right: 3px ;
-            }
-
-          }
+        &__welcome {
+          display: block;
+          font-size: 12px;
+          text-align: left;
+          margin-bottom: 10px;
+          color: #fff;
         }
 
-        &__descriptionContainer {
-          font-size: 1em;
+        &__title {
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: 14px;
+          text-align: left;
+          line-height: 3em;
+          color: #fff;
 
-          & p {
-            color: #fff;
+          &__highlight {
+            padding: 3px 6px;
+            background-color: red;
+            font-size: 2em;
+            margin-right: 3px;
           }
+        }
+      }
+
+      &__descriptionContainer {
+        font-size: 1em;
+
+        & p {
+          color: #fff;
         }
       }
     }
   }
+}
+
+.mainWrapper {
+  display: block;
+  width: 100%;
+  max-width: $xl;
+  margin: auto;
+  section {
+    padding: 16px;
+    margin: 40px auto;
+    .title {
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: block;
+      width: 100%;
+    }
+  }
 
   .porqueSection {
+    @media all and (min-width: $md){
+      float: left;
+      display: block;
+      width: 100%;
+    }
+    &__title {
+      text-align: center;
+      font-size: 36px;
+    }
     &__article {
-      & p {
-        font-size: 16px;
-        line-height: 32px;
+      &__articleParagraph {
         margin-bottom: 30px;
+        max-width: 700px;
+        margin: 20px auto;
+        text-align: center;
+        & p {
+          font-size: 16px;
+          line-height: 32px;
+        }
       }
-      & p:last-child {
+      &__articleParagraph:last-child {
         margin-bottom: 0;
       }
     }
   }
 
   .assinarSection {
-    &__description {
-      font-size: 16px;
-      line-height: 22px;
-    }
-    &__form {
+    @media all and (min-width: $md){
+      float: left;
       display: block;
       width: 100%;
-      margin: 20px auto;
-      &__inputGroup {
+    }
+    &__headerContainer {
+      display: block;
+      width: 100%;
+      @media all and (min-width: $md){
+        float: left;
+        width: 50%;
+      }
+      &__title {
+        @media all and (min-width: $md){
+          text-align: center;
+          font-size: 28px;
+        }
+      }
+      &__description {
+        font-size: 16px;
+        line-height: 22px;
+        @media all and (min-width: $md){
+          text-align: center;
+        }
+      }
+    }
+    &__formContainer {
+      display: block;
+      width: 100%;
+      @media all and (min-width: $md){
+        float: right;
+        width: 50%;
+      }
+      &__form {
         display: block;
         width: 100%;
-        &__input {
+        margin: 20px auto;
+        @media all and (min-width: $md){
+          margin: auto;
+        }
+        &__inputGroup {
+          display: block;
+          width: 100%;
+          &__input {
+            display: block;
+            width: 100%;
+            height: 50px;
+            padding: 14px;
+            border: none;
+            border-top: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-left: 1px solid #ddd;
+            &:first-child {
+              border-radius: 3px 3px 0px 0px;
+            }
+            &:last-child {
+              border-radius: 0px 0px 3px 3px;
+              border-bottom: 1px solid #ddd;
+            }
+          }
+        }
+        &__btnSubmit {
           display: block;
           width: 100%;
           height: 50px;
-          padding: 14px;
+          margin-top: 20px;
+          background-color: $primary-color;
           border: none;
-          border-top: 1px solid #ddd;
-          border-right: 1px solid #ddd;
-          border-left: 1px solid #ddd;
-          &:first-child {
-            border-radius: 3px 3px 0px 0px;
-          }
-          &:last-child {
-            border-radius: 0px 0px 3px 3px;
-            border-bottom: 1px solid #ddd;
-          }
+          border-radius: 3px;
+          color: #fff;
+          font-weight: 700;
+          font-size: 16px;
         }
-        
-      }
-      &__btnSubmit {
-        display: block;
-        width: 100%;
-        height: 50px;
-        margin-top: 20px;
-        background-color: $primary-color;
-        border: none;
-        border-radius: 3px;
-        color: #fff;
-        font-weight: 700;
-        font-size: 16px;
       }
     }
     &__shareContainer {
+      display: block;
+      width: 100%;
       margin-top: 40px;
+      @media all and (min-width: $md){
+        float: left;
+        width: 50%;
+      }
       &__shareButton {
         display: block;
         width: 100%;
@@ -198,18 +273,83 @@ $primary-color: #24292e;
         border-radius: 3px;
         color: #fff;
         font-weight: 700;
+        @media all and (min-width: $md){
+          width: 50%;
+          margin: auto;
+          margin-bottom: 10px;
+        }
       }
       &__shareButton.facebook {
         background-color: #1877f2;
       }
       &__shareButton.whatsapp {
-        background-color: #25D366;
+        background-color: #25d366;
       }
     }
   }
 
+
+  .contatoSection {
+    @media all and (min-width: $md){
+      float: left;
+      display: block;
+      width: 100%;
+    }
+    &__title {
+      text-align: center;
+      @media all and (min-width: $md){
+        font-size: 28px;
+      }
+    }
+    &__emailContainer {
+      margin-bottom: 50px;
+      & p {
+        text-align: center;
+        font-size: 16px;
+        line-height: 26px;
+      }
+    }
+    &__donateContainer {
+      & p {
+        text-align: center;
+        font-size: 16px;
+        line-height: 26px;
+      }
+      &__btnDonate {
+        display: block;
+        width: auto;
+        margin: 10px auto;
+        & a {
+          display: block;
+          padding: 8px 16px;
+        }
+      }
+    }
+
+  }
+
+  .supportSection {
+    &__supportContainer {
+      &__linkSupport {
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
 }
 
 .footerWrapper {
   background-color: $primary-color;
+  padding: 8px 32px;
+  & p {
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+  }
+  @media all and (min-width: $md){
+    float: left;
+    display: block;
+    width: 100%;
+  }
 }
